@@ -1,172 +1,583 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>WiFi Grand-Gbapleu</title>
+<title>Wifi Grand Gbapleu</title>
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f4f7fb;
-            color: #222;
-        }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        header {
-            background: #0b63ce;
-            color: white;
-            text-align: center;
-            padding: 30px 15px;
-        }
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+    color: #111;
+}
 
-        header h1 {
-            margin: 0;
-            font-size: 30px;
-        }
+header {
+    background: #0757c8;
+    color: white;
+    padding: 18px 20px;
+    text-align: center;
+}
 
-        header p {
-            font-size: 18px;
-        }
+header h1 {
+    font-size: 25px;
+}
 
-        .container {
-            max-width: 600px;
-            margin: auto;
-            padding: 20px;
-        }
+.hero {
+    background: linear-gradient(135deg, #0757c8, #00a8ff);
+    color: white;
+    text-align: center;
+    padding: 70px 20px;
+}
 
-        .card {
-            background: white;
-            margin: 15px 0;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-        }
+.hero h2 {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
 
-        .forfait {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+.hero p {
+    font-size: 20px;
+    margin-bottom: 25px;
+}
 
-        button {
-            background: #0b63ce;
-            color: white;
-            border: none;
-            padding: 12px 18px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 15px;
-        }
+.btn {
+    display: inline-block;
+    padding: 14px 25px;
+    margin: 5px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
 
-        button:hover {
-            background: #084c9e;
-        }
+.whatsapp {
+    background: #18a957;
+    color: white;
+}
 
-        #commande {
-            display: none;
-        }
+.section {
+    max-width: 1000px;
+    margin: auto;
+    padding: 50px 20px;
+}
 
-        .prix {
-            font-weight: bold;
-            color: #0b63ce;
-        }
+.section h2 {
+    text-align: center;
+    color: #0757c8;
+    margin-bottom: 30px;
+    font-size: 30px;
+}
 
-        footer {
-            text-align: center;
-            padding: 25px;
-            color: #666;
-        }
-    </style>
+.tarifs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 18px;
+}
+
+.tarif {
+    background: white;
+    padding: 25px 15px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.tarif h3 {
+    color: #0757c8;
+    margin-bottom: 12px;
+}
+
+.prix {
+    font-size: 27px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.commander {
+    display: inline-block;
+    background: #0757c8;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 25px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* ESPACE COMMANDE */
+
+#espaceCommande {
+    display: none;
+    background: white;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 30px 20px;
+    border-radius: 18px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+}
+
+#espaceCommande h2 {
+    color: #0757c8;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.etape {
+    display: none;
+}
+
+.etape.active {
+    display: block;
+}
+
+.resume {
+    background: #eef5ff;
+    padding: 18px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+
+.moyens {
+    display: grid;
+    gap: 12px;
+}
+
+.moyen {
+    border: 2px solid #ddd;
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: left;
+}
+
+.moyen:hover {
+    border-color: #0757c8;
+}
+
+.ticket {
+    background: #eaf8ef;
+    border: 2px solid #18a957;
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.code-ticket {
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    margin: 20px 0;
+    color: #0757c8;
+}
+
+.services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.service {
+    background: white;
+    padding: 25px;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.service .icone {
+    font-size: 40px;
+    margin-bottom: 12px;
+}
+
+.service h3 {
+    color: #0757c8;
+    margin-bottom: 10px;
+}
+
+.paiement {
+    background: #eaf2ff;
+    text-align: center;
+    padding: 30px;
+    border-radius: 15px;
+    line-height: 2;
+}
+
+.contact {
+    background: #0757c8;
+    color: white;
+    text-align: center;
+    padding: 55px 20px;
+}
+
+.contact h2 {
+    margin-bottom: 15px;
+}
+
+footer {
+    background: #043b88;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+@media (max-width: 600px) {
+    .hero h2 {
+        font-size: 32px;
+    }
+}
+</style>
 </head>
 
 <body>
 
 <header>
-    <h1>WiFi Grand-Gbapleu</h1>
-    <p>Internet rapide et illimité</p>
+    <h1>📶 Wifi Grand Gbapleu</h1>
 </header>
 
-<div class="container">
+<section class="hero">
 
-    <div class="card">
-        <h2>Nos forfaits WiFi</h2>
-        <p>Choisissez votre forfait :</p>
-    </div>
+    <h2>Internet rapide et illimité</h2>
 
-    <div class="card forfait">
-        <div>
-            <strong>5 heures</strong><br>
-            <span class="prix">200 FCFA</span>
+    <p>Connectez-vous simplement à notre réseau Wi-Fi.</p>
+
+    <a class="btn whatsapp"
+       href="https://wa.me/2250554390149">
+       💬 WhatsApp
+    </a>
+
+</section>
+
+<section class="section">
+
+    <h2>Nos forfaits Wi-Fi</h2>
+
+    <div class="tarifs">
+
+        <div class="tarif">
+            <h3>5 heures</h3>
+            <div class="prix">200 FCFA</div>
+            <button class="commander"
+                    onclick="choisirForfait('5 heures', 200)">
+                Commander
+            </button>
         </div>
-        <button onclick="commander('5 heures', 200)">Commander</button>
-    </div>
 
-    <div class="card forfait">
-        <div>
-            <strong>24 heures</strong><br>
-            <span class="prix">300 FCFA</span>
+        <div class="tarif">
+            <h3>24 heures</h3>
+            <div class="prix">300 FCFA</div>
+            <button class="commander"
+                    onclick="choisirForfait('24 heures', 300)">
+                Commander
+            </button>
         </div>
-        <button onclick="commander('24 heures', 300)">Commander</button>
-    </div>
 
-    <div class="card forfait">
-        <div>
-            <strong>3 jours</strong><br>
-            <span class="prix">500 FCFA</span>
+        <div class="tarif">
+            <h3>3 jours</h3>
+            <div class="prix">500 FCFA</div>
+            <button class="commander"
+                    onclick="choisirForfait('3 jours', 500)">
+                Commander
+            </button>
         </div>
-        <button onclick="commander('3 jours', 500)">Commander</button>
-    </div>
 
-    <div class="card forfait">
-        <div>
-            <strong>7 jours</strong><br>
-            <span class="prix">1 000 FCFA</span>
+        <div class="tarif">
+            <h3>7 jours</h3>
+            <div class="prix">1 000 FCFA</div>
+            <button class="commander"
+                    onclick="choisirForfait('7 jours', 1000)">
+                Commander
+            </button>
         </div>
-        <button onclick="commander('7 jours', 1000)">Commander</button>
-    </div>
 
-    <div class="card forfait">
-        <div>
-            <strong>30 jours</strong><br>
-            <span class="prix">3 000 FCFA</span>
+        <div class="tarif">
+            <h3>30 jours</h3>
+            <div class="prix">3 000 FCFA</div>
+            <button class="commander"
+                    onclick="choisirForfait('30 jours', 3000)">
+                Commander
+            </button>
         </div>
-        <button onclick="commander('30 jours', 3000)">Commander</button>
+
     </div>
 
-    <div class="card" id="commande">
-        <h2>Votre commande</h2>
+</section>
 
-        <p>Forfait : <strong id="forfaitChoisi"></strong></p>
-        <p>Prix : <strong id="prixChoisi"></strong> FCFA</p>
 
-        <button onclick="payer()">
+<!-- ESPACE COMMANDE -->
+
+<div id="espaceCommande">
+
+    <h2>🛒 Votre commande</h2>
+
+
+    <!-- ETAPE 1 -->
+
+    <div id="etape1" class="etape active">
+
+        <div class="resume">
+
+            <p>
+                <strong>Forfait :</strong>
+                <span id="forfaitChoisi"></span>
+            </p>
+
+            <p>
+                <strong>Prix :</strong>
+                <span id="prixChoisi"></span> FCFA
+            </p>
+
+        </div>
+
+        <button class="btn commander"
+                onclick="allerPaiement()">
             Continuer vers le paiement
         </button>
+
+    </div>
+
+
+    <!-- ETAPE 2 -->
+
+    <div id="etape2" class="etape">
+
+        <h3>💳 Choisissez votre moyen de paiement</h3>
+
+        <br>
+
+        <div class="moyens">
+
+            <button class="moyen"
+                    onclick="confirmerPaiement('Wave')">
+                🟣 Wave
+            </button>
+
+            <button class="moyen"
+                    onclick="confirmerPaiement('Orange Money')">
+                🟠 Orange Money
+            </button>
+
+            <button class="moyen"
+                    onclick="confirmerPaiement('MTN Money')">
+                🟡 MTN Money
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ETAPE 3 -->
+
+    <div id="etape3" class="etape">
+
+        <h3>⏳ Confirmation du paiement</h3>
+
+        <br>
+
+        <p>
+            Moyen de paiement :
+            <strong id="moyenPaiement"></strong>
+        </p>
+
+        <p>
+            Montant :
+            <strong id="montantPaiement"></strong> FCFA
+        </p>
+
+        <br>
+
+        <button class="btn commander"
+                onclick="genererTicket()">
+            ✅ Paiement effectué
+        </button>
+
+    </div>
+
+
+    <!-- ETAPE 4 -->
+
+    <div id="etape4" class="etape">
+
+        <div class="ticket">
+
+            <h3>🎟️ Votre ticket Wi-Fi</h3>
+
+            <p>Votre paiement est confirmé.</p>
+
+            <div class="code-ticket" id="ticket"></div>
+
+            <p>
+                Forfait :
+                <strong id="ticketForfait"></strong>
+            </p>
+
+            <br>
+
+            <p>
+                Utilisez ce code pour vous connecter au Wi-Fi.
+            </p>
+
+        </div>
+
     </div>
 
 </div>
 
+
+<section class="section">
+
+    <h2>Nos services</h2>
+
+    <div class="services">
+
+        <div class="service">
+            <div class="icone">📶</div>
+            <h3>Wi-Fi</h3>
+            <p>Connexion Wi-Fi rapide et accessible.</p>
+        </div>
+
+        <div class="service">
+            <div class="icone">🛰️</div>
+            <h3>Internet</h3>
+            <p>Solutions de connexion Internet.</p>
+        </div>
+
+        <div class="service">
+            <div class="icone">🔧</div>
+            <h3>Installation</h3>
+            <p>Installation et configuration de réseaux.</p>
+        </div>
+
+        <div class="service">
+            <div class="icone">📦</div>
+            <h3>Équipements</h3>
+            <p>Vente d'équipements et accessoires Wi-Fi.</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <h2>Paiement</h2>
+
+    <div class="paiement">
+
+        <p>🟣 Wave</p>
+        <p>🟠 Orange Money</p>
+        <p>🟡 MTN Money</p>
+
+        <p>
+            Paiement disponible directement depuis votre commande.
+        </p>
+
+    </div>
+
+</section>
+
+
+<section class="contact">
+
+    <h2>Besoin d'une connexion ?</h2>
+
+    <p>Contactez-nous directement sur WhatsApp.</p>
+
+    <a class="btn whatsapp"
+       href="https://wa.me/2250554390149">
+       💬 Contacter maintenant
+    </a>
+
+</section>
+
+
 <footer>
-    © 2026 WiFi Grand-Gbapleu
+    ©️ 2026 Wifi Grand Gbapleu
 </footer>
 
+
 <script>
-    function commander(forfait, prix) {
-        document.getElementById("commande").style.display = "block";
 
-        document.getElementById("forfaitChoisi").textContent = forfait;
-        document.getElementById("prixChoisi").textContent = prix;
+let forfaitActuel = "";
+let prixActuel = 0;
 
-        document.getElementById("commande").scrollIntoView({
-            behavior: "smooth"
-        });
-    }
 
-    function payer() {
-        alert("Étape paiement : nous allons maintenant connecter le système de paiement.");
-    }
+/* CHOIX DU FORFAIT */
+
+function choisirForfait(forfait, prix) {
+
+    forfaitActuel = forfait;
+    prixActuel = prix;
+
+    document.getElementById("forfaitChoisi").textContent = forfait;
+
+    document.getElementById("prixChoisi").textContent = prix;
+
+    document.getElementById("espaceCommande").style.display = "block";
+
+    document.getElementById("etape1").classList.add("active");
+    document.getElementById("etape2").classList.remove("active");
+    document.getElementById("etape3").classList.remove("active");
+    document.getElementById("etape4").classList.remove("active");
+
+    document.getElementById("espaceCommande").scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+
+/* PASSAGE AU PAIEMENT */
+
+function allerPaiement() {
+
+    document.getElementById("etape1").classList.remove("active");
+
+    document.getElementById("etape2").classList.add("active");
+}
+
+
+/* CHOIX DU MOYEN DE PAIEMENT */
+
+function confirmerPaiement(moyen) {
+
+    document.getElementById("moyenPaiement").textContent = moyen;
+
+    document.getElementById("montantPaiement").textContent = prixActuel;
+
+    document.getElementById("etape2").classList.remove("active");
+
+    document.getElementById("etape3").classList.add("active");
+}
+
+
+/* GENERATION DU TICKET */
+
+function genererTicket() {
+
+    let numero = Math.floor(100000 + Math.random() * 900000);
+
+    document.getElementById("ticket").textContent = numero;
+
+    document.getElementById("ticketForfait").textContent = forfaitActuel;
+
+    document.getElementById("etape3").classList.remove("active");
+
+    document.getElementById("etape4").classList.add("active");
+
+}
+
 </script>
 
 </body>
