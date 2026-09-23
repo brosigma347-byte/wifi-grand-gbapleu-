@@ -54,8 +54,6 @@ header h1 {
     border-radius: 30px;
     text-decoration: none;
     font-weight: bold;
-    border: none;
-    cursor: pointer;
 }
 
 .whatsapp {
@@ -108,77 +106,6 @@ header h1 {
     padding: 10px 18px;
     border-radius: 25px;
     text-decoration: none;
-    border: none;
-    cursor: pointer;
-}
-
-/* ESPACE COMMANDE */
-
-#espaceCommande {
-    display: none;
-    background: white;
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 30px 20px;
-    border-radius: 18px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.12);
-}
-
-#espaceCommande h2 {
-    color: #0757c8;
-    text-align: center;
-    margin-bottom: 25px;
-}
-
-.etape {
-    display: none;
-}
-
-.etape.active {
-    display: block;
-}
-
-.resume {
-    background: #eef5ff;
-    padding: 18px;
-    border-radius: 12px;
-    margin-bottom: 20px;
-    line-height: 1.8;
-}
-
-.moyens {
-    display: grid;
-    gap: 12px;
-}
-
-.moyen {
-    border: 2px solid #ddd;
-    background: white;
-    padding: 15px;
-    border-radius: 12px;
-    cursor: pointer;
-    font-size: 16px;
-    text-align: left;
-}
-
-.moyen:hover {
-    border-color: #0757c8;
-}
-
-.ticket {
-    background: #eaf8ef;
-    border: 2px solid #18a957;
-    padding: 25px;
-    border-radius: 15px;
-    text-align: center;
-}
-
-.code-ticket {
-    font-size: 30px;
-    font-weight: bold;
-    letter-spacing: 4px;
-    margin: 20px 0;
-    color: #0757c8;
 }
 
 .services {
@@ -267,173 +194,51 @@ footer {
         <div class="tarif">
             <h3>5 heures</h3>
             <div class="prix">200 FCFA</div>
-            <button class="commander"
-                    onclick="choisirForfait('5 heures', 200)">
-                Commander
-            </button>
+            <a class="commander"
+               href="https://wa.me/2250554390149?text=Je%20veux%20le%20forfait%205%20heures">
+               Commander
+            </a>
         </div>
 
         <div class="tarif">
             <h3>24 heures</h3>
             <div class="prix">300 FCFA</div>
-            <button class="commander"
-                    onclick="choisirForfait('24 heures', 300)">
-                Commander
-            </button>
+            <a class="commander"
+               href="https://wa.me/2250554390149?text=Je%20veux%20le%20forfait%2024%20heures">
+               Commander
+            </a>
         </div>
 
         <div class="tarif">
             <h3>3 jours</h3>
             <div class="prix">500 FCFA</div>
-            <button class="commander"
-                    onclick="choisirForfait('3 jours', 500)">
-                Commander
-            </button>
+            <a class="commander"
+               href="https://wa.me/2250554390149?text=Je%20veux%20le%20forfait%203%20jours">
+               Commander
+            </a>
         </div>
 
         <div class="tarif">
             <h3>7 jours</h3>
             <div class="prix">1 000 FCFA</div>
-            <button class="commander"
-                    onclick="choisirForfait('7 jours', 1000)">
-                Commander
-            </button>
+            <a class="commander"
+               href="https://wa.me/2250554390149?text=Je%20veux%20le%20forfait%207%20jours">
+               Commander
+            </a>
         </div>
 
         <div class="tarif">
             <h3>30 jours</h3>
             <div class="prix">3 000 FCFA</div>
-            <button class="commander"
-                    onclick="choisirForfait('30 jours', 3000)">
-                Commander
-            </button>
+            <a class="commander"
+               href="https://wa.me/2250554390149?text=Je%20veux%20le%20forfait%2030%20jours">
+               Commander
+            </a>
         </div>
 
     </div>
 
 </section>
-
-
-<!-- ESPACE COMMANDE -->
-
-<div id="espaceCommande">
-
-    <h2>🛒 Votre commande</h2>
-
-
-    <!-- ETAPE 1 -->
-
-    <div id="etape1" class="etape active">
-
-        <div class="resume">
-
-            <p>
-                <strong>Forfait :</strong>
-                <span id="forfaitChoisi"></span>
-            </p>
-
-            <p>
-                <strong>Prix :</strong>
-                <span id="prixChoisi"></span> FCFA
-            </p>
-
-        </div>
-
-        <button class="btn commander"
-                onclick="allerPaiement()">
-            Continuer vers le paiement
-        </button>
-
-    </div>
-
-
-    <!-- ETAPE 2 -->
-
-    <div id="etape2" class="etape">
-
-        <h3>💳 Choisissez votre moyen de paiement</h3>
-
-        <br>
-
-        <div class="moyens">
-
-            <button class="moyen"
-                    onclick="confirmerPaiement('Wave')">
-                🟣 Wave
-            </button>
-
-            <button class="moyen"
-                    onclick="confirmerPaiement('Orange Money')">
-                🟠 Orange Money
-            </button>
-
-            <button class="moyen"
-                    onclick="confirmerPaiement('MTN Money')">
-                🟡 MTN Money
-            </button>
-
-        </div>
-
-    </div>
-
-
-    <!-- ETAPE 3 -->
-
-    <div id="etape3" class="etape">
-
-        <h3>⏳ Confirmation du paiement</h3>
-
-        <br>
-
-        <p>
-            Moyen de paiement :
-            <strong id="moyenPaiement"></strong>
-        </p>
-
-        <p>
-            Montant :
-            <strong id="montantPaiement"></strong> FCFA
-        </p>
-
-        <br>
-
-        <button class="btn commander"
-                onclick="genererTicket()">
-            ✅ Paiement effectué
-        </button>
-
-    </div>
-
-
-    <!-- ETAPE 4 -->
-
-    <div id="etape4" class="etape">
-
-        <div class="ticket">
-
-            <h3>🎟️ Votre ticket Wi-Fi</h3>
-
-            <p>Votre paiement est confirmé.</p>
-
-            <div class="code-ticket" id="ticket"></div>
-
-            <p>
-                Forfait :
-                <strong id="ticketForfait"></strong>
-            </p>
-
-            <br>
-
-            <p>
-                Utilisez ce code pour vous connecter au Wi-Fi.
-            </p>
-
-        </div>
-
-    </div>
-
-</div>
-
 
 <section class="section">
 
@@ -469,7 +274,6 @@ footer {
 
 </section>
 
-
 <section class="section">
 
     <h2>Paiement</h2>
@@ -481,13 +285,12 @@ footer {
         <p>🟡 MTN Money</p>
 
         <p>
-            Paiement disponible directement depuis votre commande.
+            Contactez-nous sur WhatsApp pour les informations de paiement.
         </p>
 
     </div>
 
 </section>
-
 
 <section class="contact">
 
@@ -502,83 +305,9 @@ footer {
 
 </section>
 
-
 <footer>
     ©️ 2026 Wifi Grand Gbapleu
 </footer>
-
-
-<script>
-
-let forfaitActuel = "";
-let prixActuel = 0;
-
-
-/* CHOIX DU FORFAIT */
-
-function choisirForfait(forfait, prix) {
-
-    forfaitActuel = forfait;
-    prixActuel = prix;
-
-    document.getElementById("forfaitChoisi").textContent = forfait;
-
-    document.getElementById("prixChoisi").textContent = prix;
-
-    document.getElementById("espaceCommande").style.display = "block";
-
-    document.getElementById("etape1").classList.add("active");
-    document.getElementById("etape2").classList.remove("active");
-    document.getElementById("etape3").classList.remove("active");
-    document.getElementById("etape4").classList.remove("active");
-
-    document.getElementById("espaceCommande").scrollIntoView({
-        behavior: "smooth"
-    });
-}
-
-
-/* PASSAGE AU PAIEMENT */
-
-function allerPaiement() {
-
-    document.getElementById("etape1").classList.remove("active");
-
-    document.getElementById("etape2").classList.add("active");
-}
-
-
-/* CHOIX DU MOYEN DE PAIEMENT */
-
-function confirmerPaiement(moyen) {
-
-    document.getElementById("moyenPaiement").textContent = moyen;
-
-    document.getElementById("montantPaiement").textContent = prixActuel;
-
-    document.getElementById("etape2").classList.remove("active");
-
-    document.getElementById("etape3").classList.add("active");
-}
-
-
-/* GENERATION DU TICKET */
-
-function genererTicket() {
-
-    let numero = Math.floor(100000 + Math.random() * 900000);
-
-    document.getElementById("ticket").textContent = numero;
-
-    document.getElementById("ticketForfait").textContent = forfaitActuel;
-
-    document.getElementById("etape3").classList.remove("active");
-
-    document.getElementById("etape4").classList.add("active");
-
-}
-
-</script>
 
 </body>
 </html>
